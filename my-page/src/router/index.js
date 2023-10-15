@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import SingleView from "/src/components/SingleView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +19,10 @@ const router = createRouter({
       component: () => import("/src/components/ViewList.vue"),
       children: [
         {
-          path: "/:id",
+          path: ":id",
           name: "single-view",
-          component: () => import("/src/components/SingleView.vue"),
+          // component: () => import("/src/components/SingleView.vue"),
+          component: SingleView,
         },
       ],
     },
