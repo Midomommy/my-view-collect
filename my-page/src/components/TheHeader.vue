@@ -1,4 +1,20 @@
 <script setup>
+import { useUserInfoStore } from '/src/stores/main-store.js';
+import { ref, computed } from 'vue';
+const store = useUserInfoStore();
+const isLogin = computed(() => store.isLogin);
+
+const openLoginBox = computed(() => store.openLoginBox);
+
+const logOut = () => {
+  localStorage.clear();
+  store.updateEmail("");
+  store.updateLoginState(false);
+  store.updateToken("");
+  alert("您已登出！")
+  window.location.href = '/'
+}
+
 </script>
 
 <template>
@@ -19,17 +35,23 @@
                   >
                 </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="/view-list">景點列表</a>
+              <a class="nav-link" href="/view-list">所有景點</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">個人收藏列表</a>
+            <li class="nav-item" v-if="isLogin">
+              <a class="nav-link" href="/my-collect-list">個人收藏列表</a>
             </li>
           </ul>
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">
+          <div class="text-end" v-if="!isLogin">
+            <button type="button" class="btn btn-outline-light me-2" @click="openLoginBox">
               Login
             </button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+            <a href="/sign-up" type="button" class="btn btn-warning">Sign-up</a>
+          </div>
+          <div class="text-end" v-else>
+            <!-- <div>Hi, xx!</div> -->
+            <button type="button" class="btn btn-outline-light me-2" @click="logOut">
+              Log out
+            </button>
           </div>
         </div>
       </div>

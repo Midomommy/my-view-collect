@@ -1,23 +1,19 @@
 <script setup>
-import { ref } from 'vue';
-const id = 1;
-const views = ref({})
+import { useUserInfoStore } from '/src/stores/main-store.js';
+import { ref, computed } from 'vue';
+const store = useUserInfoStore();
+const isLogin = computed(() => store.isLogin);
+
+const id = window.location.pathname.split('/')[2];
+const view = ref({})
 
 getViewData();
 function getViewData() {
-  axios.get('http://localhost:3000/views/1').then((res) => {
-    views.value = res.data;
+  axios.get('http://localhost:3000/views/' + `${id}`).then((res) => {
+    view.value = res.data;
     console.log(res.data);
   });
 }
-
-// getViewData();
-// function getViewData() {
-//   axios.get('http://localhost:3000/views/' + `${id}`).then((res) => {
-//     views.value = res.data;
-//     console.log(res.data);
-//   });
-// }
 </script>
 
 <template>
@@ -31,7 +27,7 @@ function getViewData() {
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ view.name }}</h1>
         <p class="lead">{{ view.description }}</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">收藏</button>
+          <button v-if="isLogin" type="button" class="btn btn-primary btn-lg px-4 me-md-2">收藏</button>
         </div>
       </div>
     </div>

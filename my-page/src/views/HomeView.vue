@@ -1,8 +1,12 @@
 <script setup>
 import ViewList from '../components/ViewList.vue';
+import { useUserInfoStore } from '/src/stores/main-store.js';
+import { ref, computed } from 'vue';
 
+const store = useUserInfoStore();
+const isLogin = computed(() => store.isLogin);
+const openLoginBox = computed(() => store.openLoginBox);
 
-// import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
@@ -13,8 +17,8 @@ import ViewList from '../components/ViewList.vue';
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light text-center">景點收藏管理網站</h1>
           <p class="text-center">
-            <a href="#" class="btn btn-primary my-2 me-2">立即註冊</a>
-            <a href="#" class="btn btn-secondary my-2">立即登入</a>
+            <a href="/sign-up" class="btn btn-primary my-2 me-2">立即註冊</a>
+            <a v-if="!isLogin" @click="openLoginBox" class="btn btn-secondary my-2">立即登入</a>
           </p>
           <p class="lead text-body-secondary">
             [前台]<br />
@@ -33,6 +37,5 @@ import ViewList from '../components/ViewList.vue';
     <!--景點列表-->
     <ViewList />
     <!--END 景點列表-->
-    <!-- <TheWelcome /> -->
   </main>
 </template>

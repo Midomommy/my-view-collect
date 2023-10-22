@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "tinasue165@gmail.com",
+      "password": "$2a$10$4coCie8NEQbKQZjBy4HKsOkG78As8bJOrrpKvmQDPYKS.9cZ4g.V.",
+      "id": 1
+    },
+    {
+      "email": "test@admin.com",
+      "password": "$2a$10$cK9pyS8YiOAESFKsndP7bO.rm2QrAYJ9xUh5kUn3aZWvAT.gVsC4u",
+      "id": 2
+    }
+  ]
+}
