@@ -49,7 +49,7 @@ getViewsData();
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <ViewComponent v-for="view in views" v-bind="view" :key="view.id"></ViewComponent>
+        <ViewComponent v-for="view in views" v-bind="view" :key="view.id" @update="getViewsData"></ViewComponent>
       </div>
     </div>
   </div>

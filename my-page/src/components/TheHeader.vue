@@ -3,6 +3,7 @@ import { useUserInfoStore } from '/src/stores/main-store.js';
 import { ref, computed } from 'vue';
 const store = useUserInfoStore();
 const isLogin = computed(() => store.isLogin);
+const isAdmin = computed(() => store.isAdmin);
 
 const openLoginBox = computed(() => store.openLoginBox);
 
@@ -40,7 +41,13 @@ const logOut = () => {
             <li class="nav-item" v-if="isLogin">
               <a class="nav-link" href="/my-collect-list">個人收藏列表</a>
             </li>
+
           </ul>
+          <div class="text-end" v-if="isAdmin">
+            <a href="/admin" type="button" class="btn btn-outline-light me-2">
+              回到後台
+            </a>
+          </div>
           <div class="text-end" v-if="!isLogin">
             <button type="button" class="btn btn-outline-light me-2" @click="openLoginBox">
               Login

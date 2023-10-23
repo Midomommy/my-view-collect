@@ -47,7 +47,6 @@ const logIn = async () => {
     }
 }
 
-
 </script>
 
 <template>

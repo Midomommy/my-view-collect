@@ -9,16 +9,23 @@ const props = defineProps({
   id: Number,
   name: String,
   description: String,
-  collectId: {
-    type: Number,
-    default: 0
-  }
+  collectId: Number
+  // collectId: {
+  //   type: Number,
+  //   default: 0
+  // }
 })
 
+// const isCollect = ref(props.collectId !== undefined)
+
+const emit = defineEmits(['update'])
 
 const isCollect = computed({
   get: () => props.collectId,
-  set: (val) => val
+  set: (val) => {
+    emit('update')
+    return val;
+  }
 });
 
 const collect = async (id) => {
@@ -29,7 +36,8 @@ const collect = async (id) => {
     });
     console.log('isCollect.value', isCollect.value)
     console.log('res.data.id', res.data.id)
-    isCollect.value = res.data.id
+    // isCollect.value = res.data.id
+    isCollect.value = true;
   }
   catch (error) {
     if (error.message) {
@@ -45,7 +53,8 @@ const unCollect = async (id) => {
     const res = await axios.delete(`http://localhost:3000/collects/${id}`);
     if (res.status === 200) {
       // location.reload();
-      isCollect.value = 0
+      // isCollect.value = 0
+      isCollect.value = false;
     }
   }
   catch (error) {
@@ -82,7 +91,7 @@ const unCollect = async (id) => {
                 class="ms-3 btn btn-outline-secondary btn-sm btn-light">
                 取消收藏
               </button>
-              <button @click="collect(id)" v-if="!isCollect" type="button" class="ms-3 btn btn-sm btn-primary">
+              <button @click="collect(id)" v-else type="button" class="ms-3 btn btn-sm btn-primary">
                 收藏
               </button>
             </template>

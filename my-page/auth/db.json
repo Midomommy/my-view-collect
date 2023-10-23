@@ -8,7 +8,13 @@
     {
       "email": "test@admin.com",
       "password": "$2a$10$cK9pyS8YiOAESFKsndP7bO.rm2QrAYJ9xUh5kUn3aZWvAT.gVsC4u",
-      "id": 2
+      "id": 2,
+      "role": "admin"
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$.soOsNaZYDGE7asSlHvfN.s2Tio3TOnutK5jyRVcDlK5aDDdcdeVO",
+      "id": 3
     }
   ]
 }

@@ -8,6 +8,7 @@ const userId = computed(() => store.userId);
 const views = ref([])
 
 const getUserViewList = async () => {
+  views.value = [];
   const res = await axios.get(`http://localhost:3000/collects?userId=${userId.value}&_expand=view`);
   if (res.data) {
     res.data.forEach(item => {
@@ -31,7 +32,7 @@ getUserViewList();
     </div>
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <ViewComponent v-for="view in views" v-bind="view" :key="view.id"></ViewComponent>
+        <ViewComponent v-for="view in views" v-bind="view" :key="view.id" @update="getUserViewList"></ViewComponent>
       </div>
     </div>
   </div>

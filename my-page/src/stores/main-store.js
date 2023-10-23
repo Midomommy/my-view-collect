@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 
 export const useUserInfoStore = defineStore("userInfo", () => {
   const isLogin = ref(false);
+  const isAdmin = ref(false);
+
   const email = ref("");
   const accessToken = ref("");
   const isLoginBoxShow = ref(false);
@@ -32,6 +34,7 @@ export const useUserInfoStore = defineStore("userInfo", () => {
 
   const initUserData = () => {
     isLogin.value = JSON.parse(localStorage.getItem("isLogin")) || false;
+    isAdmin.value = JSON.parse(localStorage.getItem("isAdmin")) || false;
     accessToken.value = localStorage.getItem("accessToken") || "";
     email.value = localStorage.getItem("email") || "";
     userId.value = localStorage.getItem("userId") || "";
@@ -49,6 +52,10 @@ export const useUserInfoStore = defineStore("userInfo", () => {
             if (data.email === email.value) {
               userId.value = data.id;
               localStorage.setItem("userId", userId.value);
+              if (data.role && data.role === "admin") {
+                isAdmin.value = true;
+                localStorage.setItem("isAdmin", true);
+              }
             }
           });
         }
@@ -67,6 +74,7 @@ export const useUserInfoStore = defineStore("userInfo", () => {
 
   return {
     isLogin,
+    isAdmin,
     userId,
     email,
     accessToken,
