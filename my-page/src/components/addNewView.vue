@@ -18,7 +18,7 @@ onMounted(() => {
 
 const addNewView = async () => {
   try {
-    const res = await axios.post("http://localhost:3000/views", {
+    const res = await axios.post("https://json-server-in.vercel.app/views", {
       name: viewTitle.value,
       description: viewDescription.value
     })

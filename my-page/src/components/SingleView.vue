@@ -9,7 +9,7 @@ const view = ref({})
 
 getViewData();
 function getViewData() {
-  axios.get('http://localhost:3000/views/' + `${id}`).then((res) => {
+  axios.get('https://json-server-in.vercel.app/views/' + `${id}`).then((res) => {
     view.value = res.data;
     console.log(res.data);
   });

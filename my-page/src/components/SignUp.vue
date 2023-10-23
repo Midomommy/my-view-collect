@@ -12,12 +12,12 @@ const signUp = async () => {
     event.preventDefault();
     if (email.value.includes("@")) {
         try {
-            const res = await axios.post("http://localhost:5000/signup", {
+            const res = await axios.post("https://fake-auth-data.vercel.app/signup", {
                 email: email.value,
                 password: password.value,
             });
 
-            const response = await axios.post("http://localhost:3000/users", {
+            const response = await axios.post("https://json-server-in.vercel.app/users", {
                 email: email.value
             })
             console.log("res", res);

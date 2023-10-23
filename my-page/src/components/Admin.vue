@@ -18,7 +18,7 @@ onMounted(() => {
 
 const getViewsData = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/views")
+    const response = await axios.get("https://json-server-in.vercel.app/views")
 
     if (response.status === 200) {
       views.value = response.data;
@@ -55,7 +55,7 @@ const addNewView = () => {
 
 const deleteView = async (id) => {
   try {
-    const res = await axios.delete(`http://localhost:3000/views/${id}`)
+    const res = await axios.delete(`https://json-server-in.vercel.app/views/${id}`)
     getViewsData();
     alert("你已成功刪除景點！")
 

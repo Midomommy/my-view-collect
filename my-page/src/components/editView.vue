@@ -20,7 +20,7 @@ const viewId = window.location.pathname.split('/').pop();
 
 const getViewData = async () => {
   try {
-    const res = await axios.get(`http://localhost:3000/views/${viewId}`)
+    const res = await axios.get(`https://json-server-in.vercel.app/${viewId}`)
     if (res.status === 200) {
       viewTitle.value = res.data.name
       viewDescription.value = res.data.description
@@ -36,7 +36,7 @@ getViewData();
 
 const confirmEdit = async () => {
   try {
-    const res = await axios.patch(`http://localhost:3000/views/${viewId}`, {
+    const res = await axios.patch(`https://json-server-in.vercel.app/views/${viewId}`, {
       name: viewTitle.value,
       description: viewDescription.value
     })

@@ -8,7 +8,7 @@ const views = ref({})
 
 const getViewsData = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/views")
+    const response = await axios.get("https://json-server-in.vercel.app/views")
 
     if (response.status === 200) {
       views.value = response.data;
@@ -16,7 +16,7 @@ const getViewsData = async () => {
     }
 
     if (userId.value) {
-      const res = await axios.get(`http://localhost:3000/collects?userId=${userId.value}&_expand=view`);
+      const res = await axios.get(`https://json-server-in.vercel.app/collects?userId=${userId.value}&_expand=view`);
       if (res.status === 200) {
         res.data.forEach(item => {
           const idxToDelete = views.value.findIndex(i => i.id === item.view.id);
