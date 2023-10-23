@@ -17,7 +17,7 @@ const signUp = async () => {
                 password: password.value,
             });
 
-            const response = await axios.post("https://json-server-in.vercel.app/users", {
+            const response = await axios.post("https://tourist-web-2023-js-1.vercel.app/users", {
                 email: email.value
             })
             console.log("res", res);

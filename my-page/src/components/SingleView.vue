@@ -9,7 +9,7 @@ const view = ref({})
 
 getViewData();
 function getViewData() {
-  axios.get('https://json-server-in.vercel.app/views/' + `${id}`).then((res) => {
+  axios.get('https://tourist-web-2023-js-1.vercel.app/views/' + `${id}`).then((res) => {
     view.value = res.data;
     console.log(res.data);
   });

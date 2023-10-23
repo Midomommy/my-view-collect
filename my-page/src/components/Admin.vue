@@ -18,7 +18,7 @@ onMounted(() => {
 
 const getViewsData = async () => {
   try {
-    const response = await axios.get("https://json-server-in.vercel.app/views")
+    const response = await axios.get("https://tourist-web-2023-js-1.vercel.app/views")
 
     if (response.status === 200) {
       views.value = response.data;
@@ -55,7 +55,7 @@ const addNewView = () => {
 
 const deleteView = async (id) => {
   try {
-    const res = await axios.delete(`https://json-server-in.vercel.app/views/${id}`)
+    const res = await axios.delete(`https://tourist-web-2023-js-1.vercel.app/views/${id}`)
     getViewsData();
     alert("你已成功刪除景點！")
 

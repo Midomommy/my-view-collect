@@ -44,7 +44,9 @@ export const useUserInfoStore = defineStore("userInfo", () => {
   const setUserId = async () => {
     if (email.value) {
       try {
-        const res = await axios.get("https://json-server-in.vercel.app/users");
+        const res = await axios.get(
+          "https://tourist-web-2023-js-1.vercel.app/users"
+        );
 
         if (res.status === 200) {
           const datas = res.data;

@@ -30,7 +30,7 @@ const isCollect = computed({
 
 const collect = async (id) => {
   try {
-    const res = await axios.post('https://json-server-in.vercel.app/collects', {
+    const res = await axios.post('https://tourist-web-2023-js-1.vercel.app/collects', {
       userId: userId.value,
       viewId: id
     });
@@ -50,7 +50,7 @@ const collect = async (id) => {
 
 const unCollect = async (id) => {
   try {
-    const res = await axios.delete(`https://json-server-in.vercel.app/collects/${id}`);
+    const res = await axios.delete(`https://tourist-web-2023-js-1.vercel.app/collects/${id}`);
     if (res.status === 200) {
       // location.reload();
       // isCollect.value = 0

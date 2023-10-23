@@ -9,7 +9,7 @@ const views = ref([])
 
 const getUserViewList = async () => {
   views.value = [];
-  const res = await axios.get(`https://json-server-in.vercel.app/collects?userId=${userId.value}&_expand=view`);
+  const res = await axios.get(`https://tourist-web-2023-js-1.vercel.app/collects?userId=${userId.value}&_expand=view`);
   if (res.data) {
     res.data.forEach(item => {
       item.view['collectId'] = item.id
