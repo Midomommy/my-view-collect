@@ -20,7 +20,7 @@ const viewId = window.location.pathname.split('/').pop();
 
 const getViewData = async () => {
   try {
-    const res = await axios.get(`https://tourist-web-2023-js-1.vercel.app/${viewId}`)
+    const res = await axios.get(`https://tourist-web-2023-js-1.vercel.app/views/${viewId}`)
     if (res.status === 200) {
       viewTitle.value = res.data.name
       viewDescription.value = res.data.description
